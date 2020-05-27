@@ -62,6 +62,7 @@ module.exports = (env, argv) => {
               resourceQuery: /module/,
               use: [
                 'vue-style-loader',
+                'css-loader',
                 {
                   loader: 'css-loader',
                   options: {
@@ -94,6 +95,14 @@ module.exports = (env, argv) => {
         {
           test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
           loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
+        },
+        {
+          test: /\.(png|jpg|gif|svg)$/,
+          exclude: /node_modules/,
+          loader: 'file-loader',
+          options: {
+            name: 'assets/img/[name].[ext]?[hash]',
+          },
         },
       ],
     },

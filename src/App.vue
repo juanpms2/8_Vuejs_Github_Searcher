@@ -1,13 +1,13 @@
 <template>
-  <member-table/>
+  <home-page-container />
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import { MemberTable } from "./components";
+import Vue from 'vue';
+import { HomePageContainer } from './pages/home';
 
 export default Vue.extend({
-  name: "App",
-  components: { MemberTable }
+  name: 'App',
+  components: { HomePageContainer },
 });
 </script>
