@@ -52,15 +52,15 @@ export default Vue.extend({
 .card {
   margin: 2% auto;
 }
-@media (max-width: 750px) {
+@media (max-width: 720px) {
   .card-container {
-    margin-top: 25%;
-    min-width: 420px;
+    margin-top: 50%;
+    min-width: 450px;
   }
 }
 @media (max-width: 450px) {
   .card-container {
-    margin-top: 45%;
+    margin-top: 65%;
   }
 }
 </style>

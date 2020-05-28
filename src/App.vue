@@ -1,5 +1,5 @@
 <template>
-  <members-page-container />
+  <member-page-container />
 </template>
 
 <script lang="ts">

@@ -1,9 +1,23 @@
 <template>
   <div class="content">
-    <navbar-component />
+    <div class="header">
+      <navbar-component />
+    </div>
     <div class="content">
       <v-card class="mx-auto card" max-width="720">
-        <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px"></v-img>
+        <v-list-item>
+          <v-list-item-avatar color="grey">
+            <img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" alt="John" />
+          </v-list-item-avatar>
+          <v-list-item-content>
+            <v-list-item-title class="headline">Our Changing Planet</v-list-item-title>
+            <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+
+        <div class="img-card">
+          <img class="img-card" src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" alt="" />
+        </div>
 
         <v-card-title>
           Top western road trips
@@ -57,13 +71,32 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.header {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+}
 .content {
-  margin: 20% auto;
+  margin: 15% auto;
   display: block;
 }
 .card {
   margin: 0 auto;
   padding: 3%;
+}
+.img-card {
+  border-radius: 50%;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  display: block;
+}
+.img-card > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 @media (max-width: 720px) {
   .content {
