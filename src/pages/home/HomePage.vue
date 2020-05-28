@@ -11,6 +11,9 @@
           append-icon="search"
           background-color="#fff"
         ></v-text-field>
+        <div class="btn-container">
+          <v-btn class="btn" outlined color="#008000">Search</v-btn>
+        </div>
       </div>
     </div>
   </div>
@@ -60,5 +63,12 @@ export default Vue.extend({
   width: 50%;
   max-width: 250px;
   margin-top: 8%;
+}
+.btn-container {
+  width: 100%;
+}
+.btn {
+  width: 100%;
+  border-color: #008000;
 }
 </style>
