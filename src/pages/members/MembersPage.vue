@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content">
     <div class="header">
       <navbar-component />
 
@@ -7,16 +7,18 @@
     </div>
     <div class="card-container">
       <v-card class="mx-auto card" max-width="344" v-for="n in 7" :key="n">
-        <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px"></v-img>
+        <!-- <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px"></v-img> -->
+
+        <div class="img-card">
+          <img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" alt />
+        </div>
 
         <v-card-title>Top western road trips</v-card-title>
 
         <v-card-subtitle>1,000 miles of wonder</v-card-subtitle>
 
         <v-card-actions>
-          <v-btn text>Share</v-btn>
-
-          <v-btn color="purple" text>Explore</v-btn>
+          <v-btn text to="/user">Ver perfil</v-btn>
         </v-card-actions>
       </v-card>
     </div>
@@ -35,6 +37,9 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.content {
+  min-width: 450px;
+}
 .header {
   position: fixed;
   z-index: 999;
@@ -51,6 +56,19 @@ export default Vue.extend({
 }
 .card {
   margin: 2% auto;
+  padding: 3%;
+}
+.img-card {
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+  display: block;
+}
+.img-card > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 @media (max-width: 720px) {
   .card-container {

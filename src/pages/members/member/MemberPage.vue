@@ -16,28 +16,25 @@
         </v-list-item>
 
         <div class="img-card">
-          <img class="img-card" src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" alt="" />
+          <img class="img-card" src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" alt />
         </div>
 
-        <v-card-title>
-          Top western road trips
-        </v-card-title>
+        <v-card-title>Top western road trips</v-card-title>
 
-        <v-card-subtitle>
-          1,000 miles of wonder
-        </v-card-subtitle>
+        <v-card-subtitle>1,000 miles of wonder</v-card-subtitle>
 
         <v-card-actions>
-          <v-btn text>Share</v-btn>
-
-          <v-btn color="purple" text>
-            Explore
+          <v-badge color="#777777" content="9" right>
+            <v-icon color="grey lighten-1" medium>people_alt</v-icon>
+          </v-badge>
+          <v-btn class="logo-github" icon href="http://www.google.es" target="_blank">
+            <img class="img-logo-github" src="../../../assets/github-black.png" alt="github" />
           </v-btn>
 
           <v-spacer></v-spacer>
 
-          <v-btn icon @click="show = !show">
-            <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+          <v-btn icon @click="show = !show" class="btn-icon">
+            <v-icon color="grey lighten-1">expand_more</v-icon>
           </v-btn>
         </v-card-actions>
 
@@ -71,6 +68,16 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.btn-icon {
+  background: #f4f4f4;
+}
+.logo-github {
+  opacity: 0.6;
+  margin-left: 2%;
+}
+.img-logo-github {
+  max-width: 40px;
+}
 .header {
   position: fixed;
   z-index: 999;

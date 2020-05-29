@@ -12,7 +12,7 @@
           background-color="#fff"
         ></v-text-field>
         <div class="btn-container">
-          <v-btn class="btn" outlined color="#008000">Search</v-btn>
+          <v-btn class="btn" outlined color="#008000" to="/members">Search</v-btn>
         </div>
       </div>
     </div>
