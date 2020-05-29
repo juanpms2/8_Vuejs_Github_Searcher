@@ -1,4 +1,4 @@
-import { Member, createDefaultMember } from "../model/member";
+import { MemberEntity, createDefaultMemberEntity } from 'models';
 
 const checkStatus = (response: Response): Promise<Response> => {
   if (response.status >= 200 && response.status < 300) {
@@ -13,9 +13,9 @@ const parseJSON = (response: Response) => {
   return response.json();
 };
 
-const resolveMembers = (data: any): Promise<Member[]> => {
+const resolveMembers = (data: any): Promise<MemberEntity[]> => {
   const members = data.map(gitHubMember => {
-    var member: Member = createDefaultMember();
+    var member: MemberEntity = createDefaultMemberEntity();
 
     member.id = gitHubMember.id;
     member.login = gitHubMember.login;
@@ -27,7 +27,7 @@ const resolveMembers = (data: any): Promise<Member[]> => {
   return Promise.resolve(members);
 };
 
-export const getAllMembers = (organizationName: string): Promise<Member[]> => {
+export const getAllMembers = (organizationName: string): Promise<MemberEntity[]> => {
   const gitHubMembersUrl: string = `https://api.github.com/orgs/${organizationName}/members`;
 
   return fetch(gitHubMembersUrl)

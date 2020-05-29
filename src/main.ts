@@ -4,7 +4,6 @@ import { router } from './router';
 import Vuetify from 'vuetify';
 import { vuetify } from 'plugins';
 import App from './App.vue';
-import 'vuetify/dist/vuetify.min.css';
 
 Vue.use(Vuetify);
 Vue.use(VueRouter);

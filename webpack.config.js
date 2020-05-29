@@ -15,9 +15,10 @@ module.exports = (env, argv) => {
       extensions: ['.js', '.ts', 'vue'],
       alias: {
         vue: 'vue/dist/vue.runtime.esm.js',
-        model: path.resolve(basePath, './src/model'),
+        models: path.resolve(basePath, './src/models'),
         api: path.resolve(basePath, './src/api'),
         plugins: path.resolve(basePath, './src/plugins'),
+        pages: path.resolve(basePath, './src/pages'),
       },
     },
     entry: {

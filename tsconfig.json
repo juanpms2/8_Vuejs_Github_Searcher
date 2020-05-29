@@ -12,9 +12,10 @@
     "baseUrl": "src",
     "paths": {
       "vue": ["vue"],
-      "model": ["model"],
+      "models": ["models"],
       "api": ["api"],
-      "plugins": ["plugins"]
+      "plugins": ["plugins"],
+      "pages": ["pages"]
     }
   },
   "compileOnSave": false
