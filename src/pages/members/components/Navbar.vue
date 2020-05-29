@@ -2,11 +2,11 @@
   <div>
     <div class="content">
       <div dense color="#24292e" class="nav-content">
-        <div class="logo-container">
+        <router-link class="logo-container" to="/home">
           <img class="logo" src="../../../assets/logoGitHub2.png" alt="github" />
 
           <v-toolbar-title class="title">Github Search...</v-toolbar-title>
-        </div>
+        </router-link>
 
         <div class="input-search">
           <v-text-field
@@ -50,6 +50,7 @@ export default Vue.extend({
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  text-decoration: none;
 }
 .title {
   font-size: 1.2rem;
@@ -60,6 +61,7 @@ export default Vue.extend({
   max-height: 45px;
   max-width: 45px;
   margin: 0 4%;
+  cursor: pointer;
 }
 .input-search {
   width: 100%;

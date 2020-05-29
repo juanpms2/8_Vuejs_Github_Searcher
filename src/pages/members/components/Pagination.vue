@@ -1,6 +1,13 @@
 <template>
   <div class="text-center pagination-container">
-    <v-pagination v-model="page" :length="4" circle></v-pagination>
+    <v-pagination
+      v-model="page"
+      :length="4"
+      circle
+      color="#1867C0"
+      prev-icon="chevron_left"
+      next-icon="chevron_right"
+    ></v-pagination>
   </div>
 </template>
 
