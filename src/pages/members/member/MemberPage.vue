@@ -1,30 +1,30 @@
 <template>
-  <div class="content">
+  <div>
     <div class="header">
-      <navbar-component />
+      <navbar-component v-bind="{ company, txtSearch, onSearch }" />
     </div>
-    <div class="content">
+    <div class="content" v-if="user">
       <v-card class="mx-auto card" max-width="720">
         <v-list-item>
           <v-list-item-avatar color="grey">
-            <img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" alt="John" />
+            <img :src="user.avatar_url" alt="John" />
           </v-list-item-avatar>
           <v-list-item-content>
-            <v-list-item-title class="headline">Our Changing Planet</v-list-item-title>
-            <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
+            <v-list-item-title class="headline">{{user.name}}</v-list-item-title>
+            <v-list-item-subtitle>{{user.login}}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
 
         <div class="img-card">
-          <img class="img-card" src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" alt />
+          <img class="img-card" :src="user.avatar_url" :alt="user.login" />
         </div>
 
-        <v-card-title>Top western road trips</v-card-title>
+        <v-card-title>{{user.login}}</v-card-title>
 
-        <v-card-subtitle>1,000 miles of wonder</v-card-subtitle>
+        <v-card-subtitle>{{user.name}}</v-card-subtitle>
 
         <v-card-actions>
-          <v-badge color="#777777" content="9" right>
+          <v-badge color="#777777" :content="user.followers" right>
             <v-icon color="grey lighten-1" medium>people_alt</v-icon>
           </v-badge>
           <v-btn class="logo-github" icon href="http://www.google.es" target="_blank">
@@ -56,11 +56,19 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue, { PropOptions } from 'vue';
 import { NavbarComponent } from '../components';
+import { UserEntity, createDefaultUserEntity, createDefaultMemberEntity } from '../../../models';
 export default Vue.extend({
   name: 'MemberPage',
   components: { NavbarComponent },
+  props: {
+    user: {} as PropOptions<UserEntity>,
+    company: String,
+    error: String,
+    txtSearch: {} as PropOptions<(value: string) => void>,
+    onSearch: {} as PropOptions<(value: string) => void>,
+  },
   data: () => ({
     show: false,
   }),

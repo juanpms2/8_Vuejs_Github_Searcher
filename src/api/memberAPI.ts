@@ -1,4 +1,9 @@
-import { MemberEntity, createDefaultMemberEntity } from 'models';
+import {
+  MemberEntity,
+  createDefaultMemberEntity,
+  UserEntity,
+  createDefaultUserEntity,
+} from 'models';
 
 const checkStatus = (response: Response): Promise<Response> => {
   if (response.status >= 200 && response.status < 300) {
@@ -34,4 +39,19 @@ export const getAllMembers = (organizationName: string): Promise<MemberEntity[]>
     .then(response => checkStatus(response))
     .then(response => parseJSON(response))
     .then(data => resolveMembers(data));
+};
+
+export const getUser = (login: string): Promise<UserEntity> => {
+  const gitHubUserUrl: string = `https://api.github.com/users/${login}`;
+
+  return fetch(gitHubUserUrl)
+    .then(response => checkStatus(response))
+    .then(response => parseJSON(response))
+    .then(data => resolveUser(data));
+};
+
+const resolveUser = (data: UserEntity): Promise<UserEntity> => {
+  const user: UserEntity = { ...data };
+
+  return Promise.resolve(user);
 };

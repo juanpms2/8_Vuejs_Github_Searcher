@@ -18,8 +18,8 @@ export default Vue.extend({
     txtSearch(company: string) {
       this.company = company;
     },
-    onSearch(company: string) {
-      this.$router.push(`/members/${this.company}`);
+    onSearch() {
+      this.company ? this.$router.push(`/members/${this.company}`) : undefined;
     },
   },
 });

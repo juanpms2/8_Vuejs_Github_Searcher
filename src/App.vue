@@ -1,5 +1,7 @@
 <template>
-  <router-view />
+  <v-app class="body">
+    <router-view />
+  </v-app>
 </template>
 
 <script lang="ts">
@@ -11,8 +13,7 @@ export default Vue.extend({
 </script>
 
 <style>
-body {
-  background: #fafafa;
-  font-family: Arial, Helvetica, sans-serif;
+.body {
+  background: #fafafa !important;
 }
 </style>

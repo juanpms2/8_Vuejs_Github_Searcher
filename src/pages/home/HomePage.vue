@@ -41,7 +41,6 @@ export default Vue.extend({
   background-color: #24292e;
   height: 100vh;
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
 }
 .search {
   display: flex;
@@ -61,7 +60,7 @@ export default Vue.extend({
 .title {
   width: 100%;
   color: #ffffff;
-  font-size: 24px;
+  font-size: 134px;
   text-align: center;
   position: absolute;
   top: 42%;

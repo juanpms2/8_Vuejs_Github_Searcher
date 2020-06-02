@@ -1,13 +1,19 @@
 <template>
   <div class="subtitle">
-    <span class="text-subtitle"> <strong>LEMONCODE</strong> Members </span>
+    <span class="text-subtitle">
+      <strong>{{organization.toUpperCase()}}</strong> Members
+    </span>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+
 export default Vue.extend({
   name: 'SubtitleComponent',
+  props: {
+    organization: String,
+  },
 });
 </script>
 

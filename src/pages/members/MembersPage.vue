@@ -1,24 +1,24 @@
 <template>
   <div class="content">
     <div class="header">
-      <navbar-component />
+      <navbar-component v-bind="{ company, txtSearch, onSearch }" />
 
-      <subtitle-component />
+      <subtitle-component :organization="organization" />
     </div>
-    <div class="card-container">
-      <v-card class="mx-auto card" max-width="344" v-for="n in 7" :key="n">
+    <div class="card-container" v-if="members">
+      <v-card class="mx-auto card" max-width="344" v-for="member in members" :key="member.id">
         <!-- <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px"></v-img> -->
 
         <div class="img-card">
-          <img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" alt />
+          <img :src="member.avatar_url" alt />
         </div>
 
-        <v-card-title>Top western road trips</v-card-title>
+        <v-card-title class="card-name">{{member.login}}</v-card-title>
 
-        <v-card-subtitle>1,000 miles of wonder</v-card-subtitle>
+        <v-card-subtitle>{{organization}}</v-card-subtitle>
 
         <v-card-actions>
-          <v-btn text to="/user">Ver perfil</v-btn>
+          <v-btn text :to="`/user/${member.login}`">Ver perfil</v-btn>
         </v-card-actions>
       </v-card>
     </div>
@@ -27,12 +27,21 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue, { PropOptions } from 'vue';
+import { MemberEntity, createDefaultMemberEntity, createDefaultUserEntity } from 'models';
 import { NavbarComponent, SubtitleComponent, PaginationComponent } from './components';
 
 export default Vue.extend({
   name: 'MembersPage',
   components: { NavbarComponent, SubtitleComponent, PaginationComponent },
+  props: {
+    members: {} as PropOptions<MemberEntity[]>,
+    company: String,
+    organization: String,
+    error: String,
+    txtSearch: {} as PropOptions<(value: string) => void>,
+    onSearch: {} as PropOptions<(value: string) => void>,
+  },
 });
 </script>
 
@@ -57,6 +66,7 @@ export default Vue.extend({
 .card {
   margin: 2% auto;
   padding: 3%;
+  text-align: center;
 }
 .img-card {
   border-radius: 50%;
@@ -69,6 +79,9 @@ export default Vue.extend({
   width: 100%;
   height: 100%;
   border-radius: 50%;
+}
+.card-name {
+  display: block;
 }
 @media (max-width: 720px) {
   .card-container {

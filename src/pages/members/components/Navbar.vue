@@ -11,6 +11,9 @@
         <div class="input-search">
           <v-text-field
             placeholder="Search..."
+            :value="company"
+            @input="txtSearch"
+            @keypress.enter="onSearch"
             single-line
             outlined
             dense
@@ -18,7 +21,7 @@
             background-color="#fff"
           ></v-text-field>
           <div class="btn-container">
-            <v-btn class="btn" outlined color="#008000">Search</v-btn>
+            <v-btn class="btn" outlined color="#008000" @click="onSearch">Search</v-btn>
           </div>
         </div>
       </div>
@@ -27,10 +30,15 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue, { PropOptions } from 'vue';
 
 export default Vue.extend({
   name: 'NavbarComponent',
+  props: {
+    company: String,
+    txtSearch: {} as PropOptions<(value: string) => void>,
+    onSearch: {} as PropOptions<(value: string) => void>,
+  },
 });
 </script>
 
@@ -86,6 +94,12 @@ export default Vue.extend({
   .nav-content {
     grid-template-columns: 100%;
     min-width: 450px;
+  }
+  .logo-container {
+    margin-top: 2%;
+  }
+  .title {
+    margin-left: 0;
   }
   .input-search {
     grid-column: 1 / 2;

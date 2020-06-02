@@ -4,7 +4,6 @@
       v-model="page"
       :length="4"
       circle
-      color="#1867C0"
       prev-icon="chevron_left"
       next-icon="chevron_right"
     ></v-pagination>
