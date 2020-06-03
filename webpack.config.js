@@ -15,6 +15,10 @@ module.exports = (env, argv) => {
       extensions: ['.js', '.ts', 'vue'],
       alias: {
         vue: 'vue/dist/vue.runtime.esm.js',
+        models: path.resolve(basePath, './src/models'),
+        api: path.resolve(basePath, './src/api'),
+        plugins: path.resolve(basePath, './src/plugins'),
+        pages: path.resolve(basePath, './src/pages'),
       },
     },
     entry: {
@@ -56,6 +60,30 @@ module.exports = (env, argv) => {
           },
         },
         {
+          test: /\.s(c|a)ss$/,
+          use: [
+            'vue-style-loader',
+            'css-loader',
+            {
+              loader: 'sass-loader',
+              // Requires sass-loader@^7.0.0
+              options: {
+                implementation: require('sass'),
+                fiber: require('fibers'),
+                indentedSyntax: true, // optional
+              },
+              // Requires sass-loader@^8.0.0
+              options: {
+                implementation: require('sass'),
+                sassOptions: {
+                  fiber: require('fibers'),
+                  indentedSyntax: true, // optional
+                },
+              },
+            },
+          ],
+        },
+        {
           test: /\.css$/,
           oneOf: [
             {
@@ -80,30 +108,7 @@ module.exports = (env, argv) => {
             },
           ],
         },
-        {
-          test: /\.s(c|a)ss$/,
-          use: [
-            'vue-style-loader',
-            'css-loader',
-            {
-              loader: 'sass-loader',
-              // Requires sass-loader@^7.0.0
-              options: {
-                implementation: require('sass'),
-                fiber: require('fibers'),
-                indentedSyntax: true, // optional
-              },
-              // Requires sass-loader@^8.0.0
-              options: {
-                implementation: require('sass'),
-                sassOptions: {
-                  fiber: require('fibers'),
-                  indentedSyntax: true, // optional
-                },
-              },
-            },
-          ],
-        },
+
         {
           test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
           loader: 'url-loader?limit=10000&mimetype=application/font-woff',

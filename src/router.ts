@@ -1,13 +1,11 @@
 import Router, { RouteConfig } from 'vue-router';
-import { HomePageContainer } from './pages/home';
-import { MembersPageContainer } from './pages/members';
-import { MemberPageContainer } from './pages/members/member';
+import { HomePage, MembersPage, UserPage } from 'pages';
 
 const routes: RouteConfig[] = [
-  { path: '/', component: HomePageContainer },
-  { path: '/home', component: HomePageContainer },
-  { path: '/members', component: MembersPageContainer },
-  { path: '/user', component: MemberPageContainer },
+  { path: '/', redirect: '/home' },
+  { path: '/home', component: HomePage },
+  { path: '/members/:company', component: MembersPage },
+  { path: '/user/:id', component: UserPage },
 ];
 
 export const router = new Router({

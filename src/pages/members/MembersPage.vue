@@ -1,42 +1,70 @@
 <template>
   <div class="content">
     <div class="header">
-      <navbar-component />
-
-      <subtitle-component />
+      <navbar-component v-bind="{ company, txtSearch, onSearch }" />
+      <alert-error v-bind="{ error, showAlert, alert }" />
+      <subtitle-component :organization="organization" />
     </div>
-    <div class="card-container">
-      <v-card class="mx-auto card" max-width="344" v-for="n in 7" :key="n">
-        <!-- <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px"></v-img> -->
-
+    <div class="card-container" v-if="membersCard">
+      <v-card class="mx-auto card" max-width="344" v-for="member in membersCard" :key="member.id">
         <div class="img-card">
-          <img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" alt />
+          <img :src="member.avatar_url" alt />
         </div>
 
-        <v-card-title>Top western road trips</v-card-title>
+        <v-card-title class="card-name">{{ member.login }}</v-card-title>
 
-        <v-card-subtitle>1,000 miles of wonder</v-card-subtitle>
+        <v-card-subtitle>{{ organization }}</v-card-subtitle>
 
         <v-card-actions>
-          <v-btn text to="/user">Ver perfil</v-btn>
+          <v-btn text :to="`/user/${member.login}`">Ver perfil</v-btn>
         </v-card-actions>
       </v-card>
     </div>
-    <pagination-component />
+    <pagination-component v-bind="{ totalPage, handleChange }" />
+    <div class="spinner" v-if="loading">
+      <v-progress-circular :size="100" :width="7" color="#24292e" indeterminate />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import { NavbarComponent, SubtitleComponent, PaginationComponent } from './components';
+import Vue, { PropOptions } from 'vue';
+import { MemberEntity, createDefaultMemberEntity, createDefaultUserEntity } from 'models';
+import { NavbarComponent, SubtitleComponent, PaginationComponent, AlertError } from './components';
 
 export default Vue.extend({
   name: 'MembersPage',
-  components: { NavbarComponent, SubtitleComponent, PaginationComponent },
+  components: { NavbarComponent, SubtitleComponent, PaginationComponent, AlertError },
+  props: {
+    membersCard: {} as PropOptions<MemberEntity[]>,
+    company: String,
+    organization: String,
+    error: String,
+    txtSearch: {} as PropOptions<(value: string) => void>,
+    onSearch: {} as PropOptions<(value: string) => void>,
+    loading: Boolean,
+    totalPage: Number,
+    handleChange: {} as PropOptions<(value: number) => void>,
+    showAlert: {} as PropOptions<() => void>,
+    alert: Boolean,
+  },
 });
 </script>
 
 <style scoped>
+.spinner {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .content {
   min-width: 450px;
 }
@@ -57,6 +85,7 @@ export default Vue.extend({
 .card {
   margin: 2% auto;
   padding: 3%;
+  text-align: center;
 }
 .img-card {
   border-radius: 50%;
@@ -69,6 +98,9 @@ export default Vue.extend({
   width: 100%;
   height: 100%;
   border-radius: 50%;
+}
+.card-name {
+  display: block;
 }
 @media (max-width: 720px) {
   .card-container {

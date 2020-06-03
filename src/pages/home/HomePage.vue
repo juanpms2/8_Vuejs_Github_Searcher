@@ -5,14 +5,18 @@
       <div class="input-search">
         <v-text-field
           placeholder="Search..."
+          :value="company"
+          @input="txtSearch"
+          @keypress.enter="onSearch"
           single-line
           outlined
           dense
           append-icon="search"
           background-color="#fff"
+          #inputsearch
         ></v-text-field>
         <div class="btn-container">
-          <v-btn class="btn" outlined color="#008000" to="/members">Search</v-btn>
+          <v-btn class="btn" outlined color="#008000" @click="onSearch">Search</v-btn>
         </div>
       </div>
     </div>
@@ -20,10 +24,15 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue, { PropOptions } from 'vue';
 
 export default Vue.extend({
   name: 'HomePage',
+  props: {
+    company: String,
+    txtSearch: {} as PropOptions<(value: string) => void>,
+    onSearch: {} as PropOptions<(value: string) => void>,
+  },
 });
 </script>
 
@@ -32,7 +41,6 @@ export default Vue.extend({
   background-color: #24292e;
   height: 100vh;
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
 }
 .search {
   display: flex;
@@ -52,7 +60,7 @@ export default Vue.extend({
 .title {
   width: 100%;
   color: #ffffff;
-  font-size: 24px;
+  font-size: 134px;
   text-align: center;
   position: absolute;
   top: 42%;
