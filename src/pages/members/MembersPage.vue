@@ -41,7 +41,7 @@ export default Vue.extend({
     organization: String,
     error: String,
     txtSearch: {} as PropOptions<(value: string) => void>,
-    onSearch: {} as PropOptions<(value: string) => void>,
+    onSearch: {} as PropOptions<() => void>,
     loading: Boolean,
     totalPage: Number,
     handleChange: {} as PropOptions<(value: number) => void>,

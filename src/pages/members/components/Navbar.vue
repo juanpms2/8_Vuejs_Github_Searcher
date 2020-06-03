@@ -37,7 +37,7 @@ export default Vue.extend({
   props: {
     company: String,
     txtSearch: {} as PropOptions<(value: string) => void>,
-    onSearch: {} as PropOptions<(value: string) => void>,
+    onSearch: {} as PropOptions<() => void>,
   },
 });
 </script>

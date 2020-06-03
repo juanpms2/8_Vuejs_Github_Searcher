@@ -29,12 +29,6 @@ export default Vue.extend({
   name: 'MembersPageContainer',
   components: { MembersPage },
   data: createDefaultPropsData,
-  // computed: {
-  //   searchedUser(): MemberEntity[] {
-  //     console.log('hola');
-  //     return this.searchUser(this.membersCard, this.txtSearchUser);
-  //   },
-  // },
   methods: {
     searchedUser(txt: string) {
       this.membersCard = this.members.filter(
