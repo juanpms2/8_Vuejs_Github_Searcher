@@ -2,19 +2,24 @@
   <div class="text-center pagination-container">
     <v-pagination
       v-model="page"
-      :length="4"
+      :length="totalPage"
       circle
       prev-icon="chevron_left"
       next-icon="chevron_right"
+      @input="handleChange"
     ></v-pagination>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue, { PropOptions } from 'vue';
 
 export default Vue.extend({
   name: 'PaginationComponent',
+  props: {
+    totalPage: Number,
+    handleChange: {} as PropOptions<(value: number) => void>,
+  },
   data() {
     return {
       page: 1,
