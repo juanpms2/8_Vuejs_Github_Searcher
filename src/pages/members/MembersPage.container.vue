@@ -12,6 +12,8 @@
       handleChange,
       showAlert,
       alert,
+      txtSearchUser,
+      searchedUser,
     }"
   />
 </template>
@@ -21,12 +23,24 @@ import Vue, { PropOptions } from 'vue';
 import MembersPage from './MembersPage.vue';
 import { getAllMembers } from 'api';
 import { PropsData, createDefaultPropsData } from './MembersPage.vm';
+import { MemberEntity } from '../../models';
 
 export default Vue.extend({
   name: 'MembersPageContainer',
   components: { MembersPage },
   data: createDefaultPropsData,
+  // computed: {
+  //   searchedUser(): MemberEntity[] {
+  //     console.log('hola');
+  //     return this.searchUser(this.membersCard, this.txtSearchUser);
+  //   },
+  // },
   methods: {
+    searchedUser(txt: string) {
+      this.membersCard = this.members.filter(
+        member => member.login.toLowerCase().indexOf(txt.toLowerCase()) >= 0
+      );
+    },
     showAlert() {
       this.alert = !this.alert;
     },

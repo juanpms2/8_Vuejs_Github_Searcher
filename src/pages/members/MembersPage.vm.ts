@@ -16,6 +16,7 @@ export interface PropsData {
   membersCard: MemberEntity[];
   // alert error
   alert: boolean;
+  txtSearchUser: string;
 }
 
 export const createDefaultPropsData = (): PropsData => ({
@@ -34,4 +35,5 @@ export const createDefaultPropsData = (): PropsData => ({
   membersCard: [],
   //Alert error
   alert: false,
+  txtSearchUser: '',
 });

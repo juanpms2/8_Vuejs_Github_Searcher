@@ -3,7 +3,7 @@
     <div class="header">
       <navbar-component v-bind="{ company, txtSearch, onSearch }" />
       <alert-error v-bind="{ error, showAlert, alert }" />
-      <subtitle-component :organization="organization" />
+      <subtitle-component v-bind="{ organization, txtSearchUser, searchedUser }" />
     </div>
     <div class="card-container" v-if="membersCard">
       <v-card class="mx-auto card" max-width="344" v-for="member in membersCard" :key="member.id">
@@ -47,6 +47,8 @@ export default Vue.extend({
     handleChange: {} as PropOptions<(value: number) => void>,
     showAlert: {} as PropOptions<() => void>,
     alert: Boolean,
+    txtSearchUser: String,
+    searchedUser: {} as PropOptions<(value: string) => void>,
   },
 });
 </script>
@@ -80,7 +82,7 @@ export default Vue.extend({
   flex-flow: wrap;
   justify-content: space-around;
   width: 100%;
-  margin-top: 20%;
+  margin-top: 25%;
 }
 .card {
   margin: 2% auto;
@@ -104,7 +106,7 @@ export default Vue.extend({
 }
 @media (max-width: 720px) {
   .card-container {
-    margin-top: 50%;
+    margin-top: 55%;
     min-width: 450px;
   }
 }
