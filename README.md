@@ -11,7 +11,7 @@ Se amplia con lo siguiente:
 - Para el diseño se utilizan componentes personalizados y la librería Vuetify.
 - La aplicación muestra un error en caso de fallo en la búsqueda.
 - Se ha añadido paginación para mostrar los miembros.
-- Se ha puede acceder a la vista de detalle extendida de cada miembro.
+- Se puede acceder a la vista de detalle extendida de cada miembro.
 
 ## Capturas de la aplicación
 
